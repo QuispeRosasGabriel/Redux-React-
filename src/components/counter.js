@@ -5,10 +5,18 @@ import { increment, decrement } from "../redux/store";
 const Counter = props => {
   console.log(props);
 
+  // const inc = () => {
+  //   props.increment();
+  // };
+
+  // const dec = () => {
+  //   props.decrement();
+  // };
+
   return (
     <div>
-      <button onClick={inc}>+</button>
-      <button onClick={dec}>-</button>
+      <button onClick={props.increment}>+</button>
+      <button onClick={props.decrement}>-</button>
       <h1>{props.state}</h1>
     </div>
   );
@@ -22,16 +30,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    inc: () => {
-      dispatch(increment());
-    },
-
-    dec: () => {
-      dispatch(decrement());
-    }
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement())
   };
 };
 
-const CounterConnected = connect(mapStateToProps)(Counter);
+const CounterConnected = connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 export default CounterConnected;
