@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { increment, decrement } from "../redux/store";
 
-const Counter = props => {
-  console.log(props);
+const Counter = (props) => {
+  // console.log(props);
 
   // const inc = () => {
   //   props.increment();
@@ -17,21 +17,21 @@ const Counter = props => {
     <div>
       <button onClick={props.increment}>+</button>
       <button onClick={props.decrement}>-</button>
-      <h1>{props.state}</h1>
+      {/* <h1>{props.state}</h1> */}
+      <h2>{props.user.name}</h2>
+      <h2>{props.counter}</h2>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    state
-  };
+const mapStateToProps = (state) => {
+  return state;
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement())
+    decrement: () => dispatch(decrement()),
   };
 };
 

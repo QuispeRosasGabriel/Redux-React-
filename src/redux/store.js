@@ -1,18 +1,5 @@
 import { createStore } from "redux";
-
-//Store => almacenamiento del estado
-const initialState = 100;
-
-const counter = (state = initialState, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    default:
-      return state;
-  }
-};
+import rootReducer from "./../reducers";
 //Action creators
 export const increment = () => {
   return { type: "INCREMENT" };
@@ -21,6 +8,12 @@ export const increment = () => {
 export const decrement = () => {
   return { type: "DECREMENT" };
 };
+
+//Store
+// almacenamiento de nuestro estado
+const store = createStore(rootReducer);
+
+export default store;
 
 // store.subscribe(() => {
 //   console.log(store.getState());
@@ -35,8 +28,3 @@ export const decrement = () => {
 // store.getState();
 // store.dispatch();
 // store.subscribe(fun());
-
-//Store
-// almacenamiento de nuestro estado
-const store = createStore(counter);
-export default store;
