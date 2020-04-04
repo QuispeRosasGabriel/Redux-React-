@@ -1,18 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { increment, decrement } from "../redux/store";
+import { increment, decrement } from "../redux/actions/counter";
 
 const Counter = (props) => {
-  // console.log(props);
-
-  // const inc = () => {
-  //   props.increment();
-  // };
-
-  // const dec = () => {
-  //   props.decrement();
-  // };
-
   return (
     <div>
       <button onClick={props.increment}>+</button>

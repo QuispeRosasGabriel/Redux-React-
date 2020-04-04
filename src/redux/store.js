@@ -1,13 +1,5 @@
 import { createStore } from "redux";
-import rootReducer from "./../reducers";
-//Action creators
-export const increment = () => {
-  return { type: "INCREMENT" };
-};
-
-export const decrement = () => {
-  return { type: "DECREMENT" };
-};
+import rootReducer from "./reducers/index";
 
 //Store
 // almacenamiento de nuestro estado
@@ -20,10 +12,6 @@ export default store;
 // });
 
 // store.dispatch(increment());
-
-// setTimeout(() => {
-//   store.dispatch(decrement());
-// }, 1000);
 
 // store.getState();
 // store.dispatch();
