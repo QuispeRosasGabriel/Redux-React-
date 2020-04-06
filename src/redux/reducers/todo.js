@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../actions/todo";
+import { ADD_TODO, UPDATE_TODO, REMOVE_TODO } from "../actions/todo";
 
 const initialState = {
   todos: [
@@ -18,7 +18,24 @@ const todo = (state = initialState, action) => {
         todos: [...state.todos, action.payload],
       };
     //     break;
-
+    case UPDATE_TODO:
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (action.payload.id === todo.id) {
+            return {
+              ...todo,
+              checked: !todo.checked,
+            };
+          }
+          return todo;
+        }),
+      };
+    case REMOVE_TODO:
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+      };
     default:
       return state;
     // break;
