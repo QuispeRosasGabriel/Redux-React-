@@ -7,5 +7,4 @@ export const addTodo = (todo) => ({
   payload: todo,
 });
 
-
-export const removeTodo = (todo) =>()
+// export const removeTodo = (todo) =>()
