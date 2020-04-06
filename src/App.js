@@ -1,7 +1,8 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Fruits from "./components/fruits";
+// import Fruits from "./components/fruits";
+import Todo from "./components/tareas/todo";
 
 const App = () => {
   return (
@@ -9,7 +10,8 @@ const App = () => {
       <div>
         {/* <Info /> */}
         {/* <Counter /> */}
-        <Fruits />
+        {/* <Fruits /> */}
+        <Todo />
       </div>
     </Provider>
   );
