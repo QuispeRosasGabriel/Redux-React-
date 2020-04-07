@@ -25,7 +25,7 @@ const todo = (state = initialState, action) => {
           if (action.payload.id === todo.id) {
             return {
               ...todo,
-              checked: !todo.checked,
+              completado: !todo.completado,
             };
           }
           return todo;
@@ -34,7 +34,9 @@ const todo = (state = initialState, action) => {
     case REMOVE_TODO:
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        todos: state.todos.filter((todo) => {
+          return todo.id !== action.payload.id;
+        }),
       };
     default:
       return state;

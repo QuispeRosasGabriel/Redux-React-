@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import {} from "../../redux/store";
-import { addTodo } from "../../redux/actions/todo";
+import { addTodo, updateTodo, deleteTodo } from "../../redux/actions/todo";
 import { getId } from "../utils/utils";
 // import { updateName } from "../redux/actions/user";
 
-const Todo = ({ todo, addTodo }) => {
+const Todo = ({ todo, addTodo, updateTodo, deleteTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = e.target[0].value;
@@ -27,8 +27,26 @@ const Todo = ({ todo, addTodo }) => {
       </form>
       <ul>
         {todo.todos.map((todo) => (
-          <li key={todo.id}>
-            <input type="checkbox" defaultChecked={todo.completado} />
+          <li
+            key={todo.id}
+            onClick={() => {
+              updateTodo(todo);
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={todo.completado}
+              onChange={() => {
+                updateTodo(todo);
+              }}
+            />
+            <button
+              onClick={() => {
+                deleteTodo(todo);
+              }}
+            >
+              X
+            </button>
             {todo.text}
           </li>
         ))}
@@ -46,6 +64,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addTodo: (todo) => dispatch(addTodo(todo)),
+    updateTodo: (todo) => dispatch(updateTodo(todo)),
+    deleteTodo: (todo) => dispatch(deleteTodo(todo)),
   };
 };
 

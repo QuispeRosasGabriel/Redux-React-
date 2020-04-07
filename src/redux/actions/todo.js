@@ -8,3 +8,13 @@ export const addTodo = (todo) => ({
 });
 
 // export const removeTodo = (todo) =>()
+
+export const updateTodo = (todo) => ({
+  type: UPDATE_TODO,
+  payload: todo,
+});
+
+export const deleteTodo = (todo) => ({
+  type: REMOVE_TODO,
+  payload: todo,
+});

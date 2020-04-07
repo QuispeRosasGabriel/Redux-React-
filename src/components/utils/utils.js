@@ -1,3 +1,3 @@
 export const getId = () => {
-  return Math.random.toString().substr(2);
+  return Math.random().toString().substr(2);
 };
