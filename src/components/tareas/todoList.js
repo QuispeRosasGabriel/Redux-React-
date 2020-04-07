@@ -1,30 +1,15 @@
 import React from "react";
+import TodoMain from "./todoMain";
 
 const TodoList = ({ todos, updateTodo, deleteTodo }) => (
   <ul>
     {todos.map((todo) => (
-      <li
+      <TodoMain
         key={todo.id}
-        onClick={() => {
-          updateTodo(todo);
-        }}
-      >
-        <input
-          type="checkbox"
-          checked={todo.completado}
-          onChange={() => {
-            updateTodo(todo);
-          }}
-        />
-        <button
-          onClick={() => {
-            deleteTodo(todo);
-          }}
-        >
-          X
-        </button>
-        {todo.text}
-      </li>
+        todo={todo}
+        updateTodo={updateTodo}
+        deleteTodo={deleteTodo}
+      />
     ))}
   </ul>
 );
