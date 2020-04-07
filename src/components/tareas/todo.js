@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import {} from "../../redux/store";
 import { addTodo, updateTodo, deleteTodo } from "../../redux/actions/todo";
 import { getId } from "../utils/utils";
+import TodoForm from "./todoForm";
+import TodoList from "./todoList";
 // import { updateName } from "../redux/actions/user";
 
 const Todo = ({ todo, addTodo, updateTodo, deleteTodo }) => {
@@ -21,36 +23,12 @@ const Todo = ({ todo, addTodo, updateTodo, deleteTodo }) => {
   return (
     <div>
       <h1>Tareas</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" />
-        <button>Agregar</button>
-      </form>
-      <ul>
-        {todo.todos.map((todo) => (
-          <li
-            key={todo.id}
-            onClick={() => {
-              updateTodo(todo);
-            }}
-          >
-            <input
-              type="checkbox"
-              checked={todo.completado}
-              onChange={() => {
-                updateTodo(todo);
-              }}
-            />
-            <button
-              onClick={() => {
-                deleteTodo(todo);
-              }}
-            >
-              X
-            </button>
-            {todo.text}
-          </li>
-        ))}
-      </ul>
+      <TodoForm onSubmit={handleSubmit} />
+      <TodoList
+        todos={todo.todos}
+        updateTodo={updateTodo}
+        deleteTodo={deleteTodo}
+      />
     </div>
   );
 };
