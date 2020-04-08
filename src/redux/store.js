@@ -1,13 +1,10 @@
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./reducers/index";
 import { ADD_TODO, REMOVE_TODO } from "./actions/todo";
+import { logger } from "redux-logger";
+import thunk from "redux-thunk";
 
 //middleware
-const logger = (state) => (next) => (action) => {
-  console.log("ha ocurrido una accion" + action);
-  next(action);
-};
-
 const confirmDeleteToDo = (state) => (next) => (action) => {
   // console.log("Ha ocurrido una nueva accion", action);
   if (action.type === REMOVE_TODO) {
@@ -40,7 +37,7 @@ const confirmDeleteToDo = (state) => (next) => (action) => {
 // almacenamiento de nuestro estado
 const store = createStore(
   rootReducer,
-  applyMiddleware(confirmDeleteToDo, logger)
+  applyMiddleware(confirmDeleteToDo, logger, thunk)
 );
 
 export default store;
