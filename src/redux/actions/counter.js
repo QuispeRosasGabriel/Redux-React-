@@ -6,3 +6,11 @@ export const increment = () => {
 export const decrement = () => {
   return { type: "DECREMENT" };
 };
+
+export const incrementAsync = (dispatch) => {
+  setTimeout(() => {
+    dispatch({
+      type: "INCREMENT",
+    });
+  }, 2000);
+};

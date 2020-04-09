@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { incrementAsync } from "../redux/actions/counter";
 
 const Controller = (props) => {
   console.log(props);
   const handler = () => {
-    props.dispatch({
-      type: "INCREMENT",
-    });
+    props.dispatch(incrementAsync);
   };
   return (
     <div>
